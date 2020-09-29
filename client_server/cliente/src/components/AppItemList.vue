@@ -7,9 +7,9 @@
     <div class="card">
       <div class="card-body">
         <ul class="list-group">
-          <li class="list-group-item" v-for="item in items" :key="item">
+          <li class="list-group-item" v-for="item in items" :key="item.id">
             <div class="row">
-              <div class="col-md">{{ item }}</div>
+              <div class="col-md">{{ item.description }}</div>
               <div class="col-md text-right">
                 <button class="btn btn-info" @click="deleteItem(item)">
                   <span class="fa fa-trash"></span>
