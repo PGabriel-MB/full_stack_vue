@@ -18,14 +18,14 @@ export default {
 		};
 	},
 	methods: {
-		addPrefix(prefix) {
+		addItem(item) {
 			axios({
 				url: 'http://localhost:4000',
 				method: 'post',
 				data: {
 					query: `
 						mutation ($item: ItemInput) {
-							newPrefix: saveItem(item: $item) {
+							newItem: saveItem(item: $item) {
 								id
 								type
 								description
@@ -33,16 +33,13 @@ export default {
 						}
 					`,
 					variables: {
-						item: {
-							type: 'prefix',
-							description: prefix
-						}
+						item
 					}
 				}
 			}).then(response => {
 				const query = response.data;
-				const newPrefix = query.data.newPrefix;
-				this.items.prefix.push(newPrefix);
+				const newItem = query.data.newItem;
+				this.items[item.type].push(newItem);
 			});
 		},
 		addSufix(sufix) {
@@ -126,15 +123,17 @@ export default {
             <AppItemList
               title="Prefixos"
               :items="items.prefix"
-              @addItem="addPrefix"
+			  type="prefix"
+              @addItem="addItem"
               @deleteItem="deletePrefix"
             ></AppItemList>
           </div>
           <div class="col-md">
             <AppItemList
               title="Sufixos"
+			  type="suffix"
               :items="items.suffix"
-              @addItem="addSufix"
+              @addItem="addItem"
               @deleteItem="deleteSufix"
             ></AppItemList>
           </div>

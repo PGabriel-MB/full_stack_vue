@@ -1,8 +1,8 @@
 <template>
   <div>
     <h5>
-			{{ title }}
-      <span class="badge badge-info">{{items.length}}</span>
+      {{ title }}
+      <span class="badge badge-info">{{ items.length }}</span>
     </h5>
     <div class="card">
       <div class="card-body">
@@ -23,12 +23,12 @@
           <input
             type="text"
             v-on:keyup.enter="addItem(item)"
-            v-model="item"
+            v-model="description"
             class="form-control"
             placeholder="Digite o Item:"
           />
           <div class="input-group-append">
-            <button @click="addItem(item)" class="btn btn-info">
+            <button @click="addItem(type, description)" class="btn btn-info">
               <span class="fa fa-plus"></span>
             </button>
           </div>
@@ -41,21 +41,24 @@
 <script>
 export default {
 	name: "AppItemList",
-	props: ["items", "title"],
-	data () {
+	props: ["items", "type", "title"],
+	data() {
 		return {
-			item: ""
+			description: "",
 		};
 	},
 	methods: {
-		addItem(item) {
-			this.$emit('addItem', item);
-			this.item = "";
+		addItem(type, description) {
+			this.$emit("addItem", {
+				type,
+				description,
+			});
+			this.description = "";
 		},
 		deleteItem(item) {
-			this.$emit('deleteItem', item);
-		}
-	}
+			this.$emit("deleteItem", item);
+		},
+	},
 };
 </script>
 
