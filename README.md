@@ -10,8 +10,8 @@ O curso ensina como implementar um sistema de *Gerador de Nomes* para empresas. 
 
 O curso dispõe de criar toda a aplicação usando-se a seguinte stack:
 - ##### Front-end:
-    [Vue.js](https://vuejs.org/) (Estrutura de Componentes)
+    * [Vue.js](https://vuejs.org/) (Estrutura de Componentes)
 
 - ##### Back-end:
-    [GraphQL](https://graphql.org/) (API)
-    [Node.js](https://nodejs.org/en/)
+    * [GraphQL](https://graphql.org/) (API)
+    * [Node.js](https://nodejs.org/en/)
